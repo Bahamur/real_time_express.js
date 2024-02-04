@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../JS/user/edit_profile.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <div id="settings">
+
+        <h3 class="settings_h3">Changer mon nom d'utilisateur</h3>
+        <form id="form_change_username" class="form_user">
+            <div id="username_errors"></div>
+            <label>Nouveau nom d'utilisateur<br><input type="text" id="change_username" name="change_username"></label>
+            <button type="submit" id="change_username_submit" class="submit_button">Soumettre les modifications</button>
+        </form>
+
+        <h3 class="settings_h3">Changer mon mot de passe</h3>
+        <form id="form_change_password" class="form_user">
+            <div id="password_errors"></div>
+            <label>Mot de passe actuel<br><input type="password" id="current_password" name="current_password"></label>
+            <label>Nouveau mot de passe<br><input type="password" id="new_password" name="new_password"></label>
+            <button type="submit" id="change_password_submit" class="submit_button">Soumettre les modifications</button>
+        </form>
+
+        <h3 class="settings_h3">Changer mon adresse email</h3>
+        <form id="form_change_email" class="form_user">
+            <div id="email_errors"></div>
+            <label>Nouvelle adresse email<br><input type="text" id="change_email" name="change_email"></label>
+            <button type="submit" id="change_email_submit" class="submit_button">Soumettre les modifications</button>
+        </form>
+
+        <h3 class="settings_h3">Bloquer un utilisateur</h3>
+        <form id="form_block_user" class="form_user">
+            <div id="block_user_errors"></div>
+            <label>Utilisateur à bloquer<br><input type="text" id="block_user" name="block_user"></label>
+            <button type="submit" id="block_user_submit" class="submit_button">Bloquer cet utilisateur</button>
+        </form>
+
+        <div id="select_country" class="form_user">
+            <h3 class="settings_h3">Sélectionner un pays</h3>
+            <ul class="countries">
+                <li id="France">🇫🇷</li>
+                <li id="USA">🇺🇸</li>
+                <li id="Italy">🇮🇹</li>
+                <li id="Japan">🇯🇵</li>
+                <li id="China">🇨🇳</li>
+                <li id="Brazil">🇧🇷</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>

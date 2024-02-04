@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../JS/chat/select_chat.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <div id="room_container">
+        <h3 class="create_room_notice">Choisir un type de salon à créer</h3>
+        <div class="create_room_flex">
+
+            <div id="public_room" class="create_room">
+                <p class="room_pick_title">Salon public 🔓</p>
+                <p class="room_description">Le salon public est accessible par tout le monde du moment que vous connaissez le nom du salon et que sa limite ne doit pas déjà atteinte.</p>
+            </div>
+
+            <div id="private_room" class="create_room">
+                <p class="room_pick_title">Salon privé 🔐</p>
+                <p class="room_description">Le salon privé n'est accessible qu'avec un code de vérification pour prouver que vous êtes autorisé à vous y connecter. Le code de vérification est mis en place par le créateur du salon privé.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="public_room_selected" class="hide">
+        <form id="create_public_room" class="form_user">
+            <h3 id="go_back_public" class="go_back">Changer le type de salon ⤾</h3>
+            <div id="create_public_room_errors"></div>
+            <label>Nom du salon public<br><input type="text" id="create_public_room_name"></label>
+            <button type="submit" id="create_public_room_submit" class="submit_button">Nouveau salon public</button>
+        </form>
+    </div>
+
+    <div id="private_room_selected" class="hide">
+        <form id="create_private_room" class="form_user">
+            <h3 id="go_back_private" class="go_back">Changer le type de salon ⤾</h3>
+            <div id="create_private_room_errors"></div>
+            <label>Nom du salon privé<br><input type="text" id="create_private_room_name" name="create_private_room_name"></label>
+            <label>Code d'accès du salon privé<br><input type="text" id="create_private_room_password" name="create_private_room_password"></label>
+            <label>Confirmer le code d'accès<br><input type="text" id="create_private_room_confirm" name="create_private_room_confirm"></label>
+            <button type="submit" id="create_private_room_submit" class="submit_button">Nouveau salon privé</button>
+        </form>
+    </div>
+
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>

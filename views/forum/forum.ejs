@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil du forum</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="JS/forum/forum.js" defer></script>
+    <script src="JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+<body id="base">
+    <%#- include("../header") %>
+    <%- include("../common/header") %>
+
+    <% if (data.correct) { %>
+        <% const datetime = new Intl.DateTimeFormat('fr-FR', {year : 'numeric', month : 'long', day : 'numeric', 
+           weekday : 'long', hour : 'numeric', minute : 'numeric', second : 'numeric', timeZone : 'Europe/Paris'});
+        %>
+        <div id="forum_home_categories">
+            <% data.categories.forEach(cat => { %>
+                <div class="forum_home_category" id="<%=encodeURIComponent(cat.name).replace(/%20/g, '_')%>">
+
+                    <div class="forum_home_about_cat_1">
+                        <div class="forum_home_category_pic">
+                            <img class="forum_home_pic" src="../pics/forum_cats/automobile.png" alt="Image catégorie">
+                        </div>
+                        <div class="forum_home_category_name">
+                            <p><%=cat.name%></p>
+                        </div>
+                    </div>
+    
+                    <div class="forum_home_about_cat_2">
+                        <% if (cat.discussions < 0) { %>
+                            <p class="forum_home_topics_num">🥵🥵🥵🥵🥵</p>
+                        <% } else { %>
+                            <% if (cat.discussions === 0) { %>
+                                <p class="forum_home_topics_num">Aucun message</p>
+                            <% } else { %>
+                                <% let mes = 'message'; %>
+                                <% if (cat.discussions > 1) { %>
+                                    <% mes += 's'; %>
+                                <% } %>
+                                <p class="forum_home_topics_num"><%=cat.discussions%> <%=mes%></p>
+                                <p class="fh forum_home_topic">Dernier message</p>
+                                <p class="fh forum_home_topic_name"><%=cat.question_title%></p>
+                                <p class="fh forum_home_topic_datetime"><%=datetime.format(cat.last_update)%></p>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <div class="failure oe">
+            <p><%=data.error%></p>
+        </div>
+    <% } %>
+
+
+    <%- include("../common/footer") %>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../JS/user/register.js" defer></script>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body id="base">
+    
+    <div class="center_form">
+        <form id="form_register" class="form_user">
+            <div id="register_errors"></div>
+            <label>Nom d'utilisateur<br><input type="text" id="register_username" name="register_username"></label>
+            <label>Adresse email<br><input type="text" id="register_email" name="register_email"></label>
+            <label>Mot de passe<br><input type="text" id="register_password" name="register_password"></label>
+            <label>Confirmation du mot de passe<br><input type="text" id="register_password_confirm" name="register_password_confirm"></label>
+
+            <button type="submit" id="register_submit" class="submit_button">Créer mon compte</button>
+
+            <a id="back_home" href="/">Revenir à l'accueil</a>
+        </form>
+    </div>
+
+    <%- include("../common/footer") %>
+</body>
+</html>

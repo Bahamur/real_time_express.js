@@ -1,0 +1,976 @@
+/*page d'accueil---------------------------------------------------------------*/
+#base{
+    font-family: 'Raleway', sans-serif;
+    font-size : 1vw;
+    position : relative;
+}
+
+#base a{
+    text-decoration : none;
+}
+
+
+
+
+
+
+/*header & menu utilisateur----------------------------------------------------*/
+#header{
+    background-color : #f7f7f7;
+    padding : 2rem 0;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    gap : 5rem;
+    margin-bottom : 10rem;
+}
+
+
+#user_container{
+    position : relative;
+    padding : 1rem;
+    cursor : pointer;
+}
+
+
+#avatar_SVG{
+    width : 3rem;
+    border-radius : 5px;
+}
+
+.welcome_user{
+    font-size : 2rem;
+    border-bottom : 3px solid #afafaf;
+}
+
+
+#user_access{
+    display : flex;
+    flex-direction : column;
+    background-color : #f7f7f7;
+    box-shadow : 3px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius : 5px;
+    width : 25rem;
+}
+
+#user_access a{
+    color : #000000;
+    padding : 1.2rem;
+    text-align : center;
+}
+
+#user_access a:hover{
+    text-decoration : underline;
+    text-underline-offset : .5rem;
+}
+
+
+#logout_submit{
+    width : 25rem;
+    border : none;
+    padding : 1rem;
+    border-bottom-left-radius : 5px;
+    border-bottom-right-radius : 5px;
+    background-color : #f7f7f7;
+    color : #a10303;
+}
+
+#logout_submit:hover{
+    cursor : pointer;
+    text-decoration : underline;
+    text-underline-offset : .5rem;
+}
+
+
+#toggle_user_menu{
+    position : absolute;
+    top : 110%;
+    right : 0;
+}
+
+
+.hide{
+    display : none;
+}
+
+
+
+
+/*footer --------------------------------------------------------------------*/
+
+#footer{
+    background-color : #292929;
+    padding : 2rem 0;
+    margin-top : 10rem;
+}
+
+#footer a{
+    color : #f7f7f7;
+}
+
+.footer_category{
+    color : #f7f7f7;
+    font-weight : bold;
+}
+
+#follow ul{
+    padding-top : 3rem;
+    margin : auto;
+    display : flex;
+    justify-content : center;
+    gap : 1.5rem;
+}
+
+#follow li{
+    padding-top : 1rem;
+    list-style-type : none;
+    cursor : pointer;
+}
+
+
+#bottom_footer{
+    display : flex;
+    justify-content : space-around;
+}
+
+#bottom_footer li{
+    list-style-type : none;
+}
+
+#bottom_footer li p{
+    padding : 1rem 0;
+}
+
+#bottom_footer li a{
+    display : block;
+    padding : 1rem 1rem 1rem 0;
+}
+
+#bottom_footer li a:hover{
+    color : #d4d4d4;
+}
+
+
+
+/*création du compte et connexion au compte-------------------------------------------------------------------*/
+.center_form{
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    height : 100vh;
+}
+
+.form_user{
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    font-family: 'Raleway', sans-serif;
+    font-size : 1vw;
+}
+
+.form_user input{
+    width : 30vw;
+    height : 3vw;
+    padding : 0;
+    text-indent : 1vw;
+    border-radius : 5px;
+    border : 1px solid #aeaeae;
+    margin : .5vw 0 2vw 0;
+}
+
+.form_user input:hover{
+    border-color : #232222;
+}
+
+.form_user input:focus{
+    background-color : #232222;
+    color : #e5e5e5;
+    border-color : #232222;
+    outline : none;
+}
+
+#errors{
+    text-align : center;
+}
+
+#errors li{
+    list-style-type : none;
+    margin : 1vw;
+}
+
+.submit_button{
+    width : 30vw;
+    padding : 1vw;
+    border : none;
+    background : linear-gradient(to right, rgb(32, 32, 32), 20%, rgb(73, 73, 73));
+    color : #e5e5e5;
+    border-radius : 5px;
+    font-weight : bold;
+}
+
+.submit_button:hover{
+    cursor : pointer;
+    background : linear-gradient(to right, rgb(32, 32, 32), 80%, rgb(73, 73, 73));
+}
+
+
+/*hide show password------------------------------------------------------------------------------------*/
+#password_option{
+    position : relative;
+}
+
+#hide_show_password{
+    position : absolute;
+    top : 50%;
+    right : 1rem;
+    font-size : 2rem;
+    transform : translate(0, -50%);
+    cursor : pointer;
+    user-select : none;
+}
+
+
+
+
+/*Paramètres du compte--------------------------------------------------------------------------------*/
+.settings_h3{
+    font-weight : normal;
+    text-decoration : underline;
+    text-underline-offset : .5rem;
+    text-align : center;
+    margin : 10rem 0 2rem 0;
+}
+
+
+#select_country ul{
+    display : flex;
+    flex-wrap : wrap;
+    gap : 2rem;
+}
+
+#select_country li{
+    list-style-type : none;
+    font-size : 3rem;
+    cursor : pointer;
+}
+
+
+/*Revenir à l'accueil-----------------------------------------------------------------------------------*/
+#back_home{
+    text-decoration : none;
+    padding : 3rem;
+    color : #000000;
+}
+
+#back_home:hover{
+    color : #585858;
+}
+
+
+/*gestion des erreurs ou réussite des opérations de création de compte et de connexion*/
+.failure{
+    width : 30vw;
+    background-color : #eea5a5;
+    color : #683535;
+    border-radius : 10px;
+    margin-bottom : 3rem;
+}
+
+.success{
+    width : 30vw;
+    background-color : #99d3aa;
+    color : #274b30;
+    border-radius : 10px;
+    margin-bottom : 3rem;
+}
+
+.notifications{
+    position : absolute;
+    top : 2rem;
+    left : 1rem;
+    background-color : #ecf013;
+    color : #262626;
+    border-radius : 10px;
+    padding : 0 1rem;
+}
+
+.oe{
+    padding : 1rem 0;
+    text-align : center;
+}
+
+
+
+/*Gestion des messages privés-----------------------------------------------------------------------------------*/
+#available_receivers{
+    display : flex;
+    flex-direction : column;
+}
+
+
+#available_receivers li{
+    text-align : center;
+    list-style-type : none;
+    padding : .5rem;
+    margin : .4rem;
+    background-color : #acb3c9;
+    color : #242b3d;
+    border-radius : 5px;
+}
+
+
+#available_receivers li:hover{
+    background-color : #242b3d;
+    color : #acb3c9;
+    cursor : pointer;
+}
+
+
+
+
+/*Poster une question sur le forum-------------------------------------------------------------------------------*/
+.forum_h3{
+    font-weight : normal;
+    padding : 2rem;
+}
+
+#forum_post_wtd{
+    width : 30vw;
+    padding : 2rem;
+}
+
+
+#forum_post_categories{
+    margin-bottom : 4rem;
+}
+
+
+
+
+.category{
+    display : flex;
+    align-items : center;
+    position : relative;
+    width : 30vw;
+    color : #f7f7f7;
+    transition : transform 0.2s ease;
+}
+
+/*emoji pas encore visible*/
+.category::after{
+    content : "🤔";
+    position : absolute;
+    right : 1rem;
+    opacity : 0;
+    font-size : 2rem;
+}
+
+
+.category:hover{
+    cursor : pointer;
+    transform : scale(1.15);
+}
+
+
+.subcat{
+    position : relative;
+    width : 23vw;
+    color : #f7f7f7;
+    background-color : #232222;
+    transition : transform 0.2s ease;
+}
+
+
+
+.subcat::after{
+    content : "👍";
+    opacity : 0;
+    font-size : 2rem;
+}
+
+.subcat:hover{
+    cursor : pointer;
+    transform : scale(1.15);
+}
+
+.sub_category_description{
+    width : 23vw;
+    color : #232222;
+    background-color : #ebebeb;
+}
+
+
+
+.cat_layout{
+    padding : 1vw;
+    margin : .5vw;
+    border-radius : 5px;
+}
+
+.selected::after{
+    opacity : 1;
+}
+
+
+
+
+/*La page d'accueil du forum*/
+#forum_home_categories{
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center;
+    gap : 3rem;
+}
+
+.forum_home_category{
+    width : 30rem;
+    border-radius : 5px;
+    box-shadow : 3px 4px 6px rgba(0, 0, 0, 0.2);
+    transition : transform 0.2s ease;
+}
+
+.forum_home_category:hover{
+    transform : scale(1.1);
+    cursor : pointer;
+}
+
+/*provisoire*/
+.forum_home_category_pic{
+    width : 30rem;
+    height : 15rem;
+    background-color : #222222;
+    border-radius : 5px 5px 0 0;
+    overflow : hidden;
+}
+
+.forum_home_pic{
+    width : 100%;
+    height : auto;
+}
+
+
+.forum_home_category_name{
+    padding : 1rem;
+    font-size : 1.3rem;
+    text-align : center;
+}
+
+.forum_home_category_name p{
+    font-size : 1.5rem;
+    color : #558abe;
+}
+
+.forum_home_topics_num{
+    text-align : center;
+    text-decoration : underline;
+    text-underline-offset : .6rem;
+    padding : 1rem;
+}
+
+.fh{
+    line-height : .8rem;
+    padding : 0 1rem;
+}
+
+
+/*Forum seconde page----------------------------------------------------------------------------------------*/
+.forum_sub_cats{
+    display : flex;
+    justify-content : center;
+}
+
+
+.forum_sub_cat_group{
+    width : 40%;
+    border-radius : 5px;
+    padding-bottom : 2rem;
+    margin : 4rem 2rem;
+    box-shadow : 3px 4px 6px rgba(0, 0, 0, 0.2);
+    background-color : #f8f8f8;
+    transition : transform 0.2s ease;
+}
+
+.forum_sub_cat_group:hover{
+    transform : scale(1.1);
+    cursor : pointer;
+}
+
+.forum_sub_cat_name{
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    background-color : #597697;
+    color : #f7f7f7;
+    border-radius : 5px 5px 0 0;
+    padding : 2rem;
+}
+
+.forum_sub_cat_name:hover{
+    background-color : #3a618b;
+}
+
+.forum_sub_cat_name a{
+    text-decoration : none;
+    color : inherit;
+    font-size : 1.5rem;
+}
+
+.about_sub_cat_data{
+    background-color : #e6e6e6;
+    color : #222222;
+    border-radius : 5px;
+    padding : .2rem 1rem;
+    margin : 1rem 2rem;
+}
+
+.forum_sub_cat_none{
+    margin : 2rem;
+}
+
+.about_sub_cat_username{
+    color : #af2772;
+}
+
+
+/*Forum troisième page-----------------------------------------------------------------------*/
+#see_sub_cat_title{
+    font-weight : normal;
+    background-color: #97598a;
+    color : white;
+    border-radius : 5px;
+    text-align: center;
+    padding : 1rem;
+    max-width: 30%;
+    margin : auto;
+}
+
+
+#sub_cat_flex{
+    display : flex;
+    justify-content : center;
+    gap : 5rem;
+}
+
+
+.forum_current_sub_category_questions{
+    width : 40%;
+    background-color : #f8f8f8;
+    transition : transform 0.2s ease;
+}
+
+.forum_current_sub_category_questions:hover{
+    transform : scale(1.1);
+    cursor : pointer;
+}
+
+.forum_current_sub_category_questions{
+    padding : 1rem;
+    margin : 3rem 0;
+    box-shadow : 3px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius : 5px;
+}
+
+.forum_current_sub_last_message_title{
+    background-color : #272727;
+    color : #ffffff;
+    padding : .2rem 1rem;
+    margin : 1rem 2rem 0 2rem;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
+}
+
+.forum_current_sub_last_message{
+    border-bottom-left-radius : 5px;
+    border-bottom-right-radius : 5px;
+    padding : .2rem 1rem;
+    margin : 0 2rem 1rem 2rem;
+    background-color : #363636;
+    color : #ffffff;
+}
+
+
+.forum_current_sub_no_message{
+    padding : .2rem 1rem;
+    margin : 1rem 2rem;
+    background-color : #a73443;
+    color : #ffffff;
+    border-radius : 5px;
+}
+
+#forum_current_sub_category_none{
+    text-align : center;
+    margin-top : 2rem;
+}
+
+
+
+
+
+/*Forum quatrième page------------------------------------------------------------------------------------*/
+.forum_answer_subject{
+    text-align : center;
+}
+
+.other_messages{
+    background-color : #363636;
+}
+
+.self_messages{
+    background-color : #288143;
+}
+
+.forum_display_messages{
+    width : 90%;
+    display : flex;
+    align-items : flex-start;
+    gap : 2rem;
+    margin : 2rem;
+}
+
+
+
+.forum_display_user{
+    display : flex;
+    flex-direction : column;
+    align-items: center;
+    width : 5rem;
+}
+
+.forum_display_user a{
+    text-align: center;
+    text-decoration: none;
+    color : inherit;
+    padding : .5rem 0;
+}
+
+
+.forum_display_user img{
+    width : 3rem;
+    height : auto;
+    border-radius : 5px;
+}
+
+
+
+.forum_display_user_message{
+    background-color : #222222;
+    color : #ffffff;
+    padding : 0 1rem;
+    border-radius : 5px;
+}
+
+
+.forum_display_user_message_data{
+    padding : .1rem 1rem;
+}
+
+.message_datetime{
+    color : #b3b3b3;
+    font-size: .9rem;
+}
+
+#forum_post_messages{
+    width : 30vw;
+    position : relative;
+    margin : 2rem 0 2rem 3rem;
+}
+
+#forum_post_message{
+    width : 30vw;
+    height : 3vw;
+    padding : 0;
+    text-indent : 1vw;
+    border-radius : 5px;
+    border : none;
+    background-color : #d8d8d8;
+}
+
+
+#forum_message_send{
+    position : absolute;
+    bottom : 0;
+    right : 0;
+    height : 3vw;
+    background-color : #222222;
+    color : #f7f7f7;
+    border : none;
+    border-radius : 5px;
+    padding : .5rem 1rem;
+}
+
+
+#forum_post_message:hover{
+    border-color : #232222;
+}
+
+#forum_post_message:focus{
+    background-color : #232222;
+    color : #e5e5e5;
+    border-color : #232222;
+    outline : none;
+}
+
+
+
+
+/*blagues-----------------------------------------------------------------------------------------------------------*/
+#blooper_fate{
+    display : flex;
+    justify-content: center;
+    transition : transform .3s ease;
+}
+
+#spectator{
+    background-color : #775973;
+}
+
+#actor{
+    background-color : #8b5849;
+}
+
+
+.blooper_choice{
+    display : flex;
+    align-items : center;
+    flex : 1;
+    border-radius : 5px;
+    padding : 2rem;
+    margin : 0 5rem;
+    color : #f7f7f7;
+}
+
+.blooper_choice:hover{
+    cursor : pointer;
+}
+
+.move_up{
+    transform : translateY(-100vh);
+}
+
+.select_best_blooper{
+    width : 20rem;
+    height : 6rem;
+    border-radius : 10px;
+}
+
+#blooper_1{
+    background-color : #4d7951;
+}
+
+#blooper_2{
+    background-color : #457786;
+}
+
+
+
+
+
+/*Page de l'utilisateur----------------------------------------------------------------------------------------------*/
+
+.about_user{
+    margin-left : 3rem;
+}
+
+
+#user_background{
+    width : 100vw;
+}
+
+#user_page_username{
+    font-weight : normal;
+}
+
+#subscribe{
+    margin-left : 3rem;
+    background-color : #702636;
+    color : #f7f7f7;
+    padding : 1rem 2rem;
+    border-radius : 5px;
+    border : none;
+    cursor : pointer;
+}
+
+#change_user_background{
+    margin : 5rem 3rem;
+}
+
+#crop_image_buttons{
+    margin : 4rem 0;
+}
+
+#crop_image_buttons button{
+    background-color : #313131;
+    color : #f7f7f7;
+    padding : .5rem;
+    border : none;
+    border-radius : 5px;
+    cursor : pointer;
+}
+
+/*CONSERVER IMPERATIVEMENT*/
+#crop_image_container{
+    width : 60rem;
+    margin : 4rem 0;
+}
+#crop_image{
+    max-width : 100%;
+}
+
+
+
+/*Créer des salons privés ou publiques--------------------------------------------------------------------------------*/
+.create_room_notice{
+    text-align : center;
+    font-weight : normal;
+    text-decoration : underline;
+    text-underline-offset : .5rem;
+    margin-bottom : 5rem;
+}
+
+
+.go_back{
+    cursor : pointer;
+    padding : 1rem;
+    border-radius : 5px;
+    margin-bottom : 4rem;
+    background-color : #7161ad;
+    color : #f7f7f7;
+    font-weight : normal;
+}
+
+#create_private_room_errors{
+    list-style-type : none;
+}
+
+.create_room_flex{
+    display : flex;
+    gap : 5rem;
+    justify-content : center;
+}
+
+.create_room{
+    width : 40vw;
+    padding : 2rem;
+    border-radius : 10px;
+    color : #f7f7f7;
+    cursor : pointer;
+}
+
+.room_pick_title{
+    font-size : 2.5rem;
+}
+
+#public_room{
+    background-color : #4e6881;
+}
+
+#private_room{
+    background-color : #8d4289;
+}
+
+
+
+/*Création d'un clan---------------------------------------------------------------------------------------------*/
+#clan_explanation{
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    gap : 5rem;
+    background-color: #f0f5b4;
+    padding : 2rem 0;
+}
+
+#explanation{
+    width : 50%;
+}
+
+#explation_title{
+    font-size : 3rem;
+    font-weight : normal;
+    text-align : center;
+}
+
+#clan_explanation img{
+    width : 20rem;
+    height : auto;
+}
+
+#blason_legend{
+    padding : 2rem;
+}
+
+#clan_blason{
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+}
+
+
+#latest_clans_created{
+    background-color : #b19e83;
+    color : #3a2f20;
+}
+
+
+.common_title_clan{
+    text-align : center;
+    font-weight : normal;
+    padding : 2rem;
+}
+
+
+#latest_clans{
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center;
+    gap : 3rem;
+    padding : 2rem;
+}
+
+
+.clan{
+    padding : .5rem 2rem;
+    border-radius : 5px;
+    background-color : #524738;
+    color : #f7f7f7;
+    width : 15%;
+    text-align : center;
+}
+
+
+#clan_creation{
+    margin-top : 8rem;
+}
+
+
+
+
+
+/*consultation des messages----------------------------------------------------------------------------------------*/
+.messages_h3{
+    text-align : center;
+    font-weight : normal;
+    padding : 2rem;
+}
+
+
+.about_grouped_message{
+    display : flex;
+    justify-content : space-between;
+    background-color : #ebebeb;
+    padding : .5rem 2rem;
+    margin : .3rem 0;
+    cursor : pointer;
+}
+
+
+
+/*Not found-------------------------------------------------------------------------------------------------------*/
+.not_found_h2{
+    margin-left : 2rem;
+    font-weight : normal;
+}
+
+
+/**idée pour le captcha faire un jeu minuscule ou des gouttes tombent, le joueur doit toucher la goutte de la bonne couleur
+pour vérifier le captcha*/

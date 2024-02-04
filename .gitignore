@@ -1,0 +1,5 @@
+node_modules
+.env
+public/SVG
+package-lock.json
+package.json

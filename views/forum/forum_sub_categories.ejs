@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../JS/forum/forum_sub_categories.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <% if (data.correct) { %>
+        <div class="forum_sub_cats">
+            <% let current_sub_category = null; %>
+            <% data.sub_cat.forEach(sub => { %>
+                <% if (sub.name !== current_sub_category) { %>
+                    <% if (current_sub_category !== null) { %>
+                        </div>
+                    <% } %>
+
+                    <div class="forum_sub_cat_group" id="<%=encodeURIComponent(sub.name).replace(/%20/g, '_')%>">
+                        <div class="forum_sub_cat_name">
+                            <p><%=sub.name%></p>
+                            <% let sujet = 'sujet' %>
+                            <% if (sub.discussions > 0) { %>
+                                <% if (sub.discussions > 1) { %>
+                                    <% sujet += 's' %>
+                                <% } %>
+                                <p class="forum_sub_cat_num"><%=sub.discussions%> <%=sujet%></p>
+                            <% } %>
+                        </div>
+                <% } %>
+
+                <div class="forum_sub_cat_questions">
+                    <% if (sub.question_id) { %>
+                        <div class="about_sub_cat_data">
+                            <p class="about_sub_cat_username"><%=sub.username%></p>
+                            <p><%=sub.title%></p>
+                            <p><%=sub.description%></p>
+                        </div>
+                    <% } else { %>
+                        <div class="forum_sub_cat_none">
+                            <p>Aucun sujet dans cette sous-catégorie</p>
+                        </div>
+                    <% } %>
+                </div>
+
+                <% current_sub_category = sub.name; %>
+            <% }) %>
+            <% if (current_sub_category !== null) { %>
+                </div>
+            <% } %>
+        </div>  
+    <% } else { %>
+        <div class="failure oe">
+            <p><%=data.error%></p>
+        </div>
+    <% } %>
+
+
+    <%- include("../common/footer") %>
+    
+</body>
+</html>

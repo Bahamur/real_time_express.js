@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../JS/user/get_messages.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <div id="user_messages">
+        <% if (data.correct){ %>
+            <h3 class="messages_h3">Utilisateurs vous ayant envoyé des messages</h3>
+            <% data.messages.forEach(message => { %>
+                <div class="message_grouped_by_sender">
+                    <div class="about_grouped_message">
+                        <p><%=message.sender%></p>
+                        <p><%=message.content%></p>
+                        <p>Supprimer</p>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="failure oe">
+                <p><%=data.error%></p>
+            </div>
+        <% } %>
+    </div>
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>

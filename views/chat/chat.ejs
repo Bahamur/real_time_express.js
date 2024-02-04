@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="JS/chat.js" defer></script>
+
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+<body>
+    <div id="room_space">
+
+        <div id="room_panel">
+            <h2 id="room_name"></h2>
+            <div id="room_users"></div>
+        </div>
+    
+    
+        <div id="room_messages">
+            <div id="messages_chat"></div>
+            <form id="form_chat">
+                <label><input type="text" id="input_chat" placeholder="Veuillez écrire votre message ici"></label>
+                <button type="submit" id="submit_chat">Envoyer</button>
+            </form>
+        </div>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../JS/blooper/blooper_main.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+    
+    <div id="blooper_fate">
+        <div id="spectator" class="blooper_choice">
+            <p>Vous observez deux membres s'affronter en duel. Votez pour élire celui qui a la meilleure blague.</p>
+        </div>
+        <div id="actor" class="blooper_choice">
+            <p>La tension est à son comble. Affrontez un autre membre en duel. Vous et votre adversaire avez 30 secondes pour écrire votre meilleure blague. Celui qui obtient le plus de voix remporte la victoire.</p>
+        </div>
+    </div>
+
+    <div id="content" class="hide">
+        <div id="blooper_1">
+            <label><%= %><br><input type="text" id="blooper_1_content"></label>
+        </div>
+
+        <div id="blooper_2">
+            <label><%= %><br><input type="text" id="blooper_2_content"></label>
+        </div>
+    </div>
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>

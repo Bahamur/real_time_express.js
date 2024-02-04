@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../JS/forum/forum_post.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <form id="forum_post" class="form_user">
+        <h3 class="forum_h3">Poser une question sur le forum</h3>
+        <p id="forum_post_wtd">Pour ajouter une nouvelle question, remplir tous les champs puis sélectionner une catégorie et une sous-catégorie en cliquant dessus.
+            Une catégorie est colorée tandis qu'une sous-catégorie est de couleur noire.
+        </p>
+        <div id="forum_post_errors"></div>
+        <label>Titre<br><input type="text" id="forum_post_title" name="forum_post_title" placeholder="Donner un titre au problème"></label>
+
+        <!--A supprimer par la suite-->
+        <label>Décrire le problème<br><input id="forum_post_description" name="forum_post_description" placeholder="Décrire le problème de manière claire et concise"></label>
+
+        <% let counter = Math.floor((Math.random() * 1000) + 1); %>
+        <% let subcounter = Math.floor((Math.random() * 1000) + 1); %>
+        <div id="forum_post_categories">
+            <% if (data.correct) { %>
+                <% data.categories.forEach(category => { %>
+                    <div class="current_category">
+                        <div class="category cat_layout" id="<%=counter%>">
+                            <%=category.category_name%>
+                        </div>
+                        <div class="sub_category_and_description" id="subcatdesc<%=counter%>">
+                            <% const sub_categories = JSON.parse(category.sub_categories); %>
+                            <% sub_categories.forEach(sub_category => { %>
+                                <div class="subcat<%=counter%> subcat cat_layout hide" id="<%=subcounter%>">
+                                    <%=sub_category.sub_category_name %>
+                                </div>
+                                <div class="sub_category_description cat_layout hide" id="subdesc<%=subcounter++%>">
+                                    <%=sub_category.sub_category_description %>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                    <% counter++; %>
+                    <% }) %>
+            <% } else { %>
+                <div class="failure oe">
+                    <p><%=data.error%></p>
+                </div>
+                <% } %>
+        </div>
+
+        <button type="submit" id="forum_post_submit" class="submit_button">Poser ma question</button>
+    </form>
+
+    <%- include("../common/footer") %>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../../../JS/forum/forum_answer.js" defer></script>
+    <script src="../../../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../../../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../../../CSS/normalize.css">
+    <link rel="stylesheet" href="../../../CSS/style.css">
+    
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <div class="notifications"></div>
+
+    <% if (data.correct) { %>
+        <div id="messages_errors"></div>
+        <div class="forum_current_question">
+            <% let previous_question = null; %>
+            <div class="forum_messages" data-current-problem="<%=data.question_id%>">
+                <% data.messages.forEach(message => { %>
+                    <% if (message.question_title !== previous_question) { %>
+                        <p class="forum_answer_subject"><%=message.question_title%></p>
+                        <p class="forum_answer_subject"><%=message.question_description%></p>
+                    <% } %>
+
+                    <div class="forum_display_messages">
+                        <div class="forum_display_user">
+                            <% if (message.picture === null) { %>
+                                <img src="../../../../SVG/avatar.svg" alt="Image de profil par défaut">
+                                <a href=""><%=message.username%></a>
+                            <% } %>
+                        </div>
+                        <div class="forum_display_user_message">
+                            <div class="forum_display_user_message_data">
+                                <p class="message_name"><%=message.message%></p>
+                                <p class="message_datetime"><%=data.format_datetime('Europe/Paris', 'fr-FR').format(message.message_date)%></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% previous_question = message.question_title; %>
+                <% }) %>
+            </div>
+            <form id="forum_post_messages">
+                <label>Répondre<br><input type="text" id="forum_post_message" placeholder="Écrire votre message"></label>
+                <button type="submit" id="forum_message_send">Envoyer</button>
+            </form>
+        </div>
+    <% } else { %>
+            <div class="failure oe">
+                <%=data.error%>
+            </div>
+    <% } %>
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>

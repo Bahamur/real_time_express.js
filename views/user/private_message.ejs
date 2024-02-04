@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../../CSS/normalize.css">
+    <link rel="stylesheet" href="../../CSS/style.css">
+
+    <script src="../../JS/user/private_message.js" defer></script>
+
+
+
+</head>
+<body id="base">
+    <%- include("../common/header") %>
+    
+    <div class="notifications"></div>
+
+    <div class="center_form">
+        <form id="form_private_message" class="form_user">
+            <div id="private_message_errors"></div>
+            <label>Destinataire du message<br><input type="text" id="private_message_receiver" name="private_message_receiver"></label>
+            <div id="available_receivers"></div>
+            <label>Votre message<br><input type="text" id="private_message" name="private_message"></label>
+            <button type="submit" id="send_private_message" class="submit_button">Envoyer</button>
+        </form>
+    </div>
+
+    <%- include("../common/footer") %>
+</body>
+</html>

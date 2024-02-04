@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="JS/login.js" defer></script>
+
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body id="base">
+
+    <div class="center_form">
+        <form id="form_login" action="/login" method="post" class="form_user">
+            <div id="errors"></div>
+            <label>Nom d'utilisateur<br><input type="text" id="login_username" name="username"></label>
+            <div id="password_option" class="icon_password">
+                <label>Mot de passe<br><input type="password" id="login_password" name="password"></label>
+                <div id="hide_show_password">🙈</div>
+            </div>
+
+            <button type="submit" id="login_submit" class="submit_button">Se connecter</button>
+
+            <a id="back_home" href="/">Revenir à l'accueil</a>
+        </form>
+    </div>
+
+    <%- include("./common/footer") %>
+</body>
+</html>

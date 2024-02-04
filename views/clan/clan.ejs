@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../JS/clan/clan.js" defer></script>
+    <script src="../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <div id="clan_flex">
+        <div id="clan_explanation">
+            <div id="explanation">
+                <h3 class="common_title_clan">⚔️ Les clans ⚔️</h3>
+                <p>
+                    Un clan est utilisé pour rassembler des membres avec des intérêts communs.
+                    Vous pouvez appartenir à un ou plusieurs clans à la fois.
+                    Pour en rejoindre un, rien de plus simple, il vous suffit d'en faire la demande à son créateur qui pourra alors 
+                    accepter votre requête ou la refuser.
+                    Vous pouvez créer le votre si vous le désirez mais vous ne pouvez en créer qu'un seul par compte.
+                    Une fois votre clan créé, vous pouvez si vous le désirez ajouter un blason pour le représenter.
+                </p>
+            </div>
+            <div id="clan_blason">
+                <img src="../pics/blason_clan_ex.png" alt="Exemple possible d'un blason de clan">
+                <div id="blason_legend">Exemple de blason pour un clan</div>
+            </div>
+        </div>
+    </div>
+
+
+    <% if (data.correct) { %>
+        <div id="latest_clans_created">
+            <h3 class="common_title_clan">Derniers clans créés</h3>
+            <div id="latest_clans">
+                <% data.clans.forEach(clan => { %>
+                    <div class="clan">
+                        <p><%=clan.name%></p>
+                        <!--<p><%=data.format_datetime('Europe/Paris', 'fr-FR').format(clan.creation_date)%></p>-->
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="failure oe">
+            <p><%=data.error%></p>
+        </div>
+    <% } %>
+
+    <div id="clan_creation">
+        <form id="clan_creation_form" class="form_user">
+            <h3 class="common_title_clan">Créer un clan</h3>
+            <div id="clan_errors"></div>
+            <label>Nom du clan<br><input type="text" id="clan_creation_name"></label>
+            <button type="submit" class="submit_button">Créer un clan</button>
+        </form>
+    </div>
+
+    <!--Nom du clan + devise du clan + bannière du clan-->
+    <%- include("../common/footer") %>
+</body>
+</html>

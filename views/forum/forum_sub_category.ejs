@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../../../JS/forum/forum_sub_category.js" defer></script>
+    <script src="../../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../../JS/logout.js" defer></script>
+    <% } %>
+
+    <link rel="stylesheet" href="../../../CSS/normalize.css">
+    <link rel="stylesheet" href="../../../CSS/style.css">
+
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <% if (data.correct) { %>
+        <div class="forum_current_sub_category">
+            <h3 id="see_sub_cat_title"><%=data.sub%></h3>
+            <% if (!data.eq) { %>
+                <div id="sub_cat_flex">
+                    <% data.questions.forEach(question => { %>
+                        <div class="forum_current_sub_category_questions" data-question-name="<%=question.random_id%>">
+                            <div class="about_sub_cat_data">
+                                <p class="about_sub_cat_username"><%=question.question_username%></p>
+                                <p><%=question.title%></p>
+                                <p><%=question.description%></p>
+                            </div>
+                            <div class="forum_current_sub_message">
+                                <% if (question.message) { %>
+                                    <div class="forum_current_sub_last_message_title">
+                                        <p>Dernier message pour ce sujet</p>
+                                    </div>
+                                    <div class="forum_current_sub_last_message">
+                                        <p><%=question.message_username%></p>
+                                        <p><%=question.message%></p>
+                                    </div>
+                                    
+                                <% } else { %>
+                                    <div class="forum_current_sub_no_message">
+                                        <p>Aucun message n'a encore été publié pour ce sujet</p>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div id="forum_current_sub_category_none">
+                    <p>Aucune question n'a été publiée dans cette sous-catégorie</p>
+                </div>
+            <% } %>
+        <% } else { %>
+            <div class="failure oe">
+                <p><%=data.error%></p>
+            </div>
+        <% } %>
+        </div>
+        
+        <%- include("../common/footer") %>
+        
+</body>
+</html>

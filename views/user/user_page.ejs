@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../CSS/normalize.css">
+    <link rel="stylesheet" href="../../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="../../JS/user/user_page.js" defer></script>
+    <script src="../../JS/set.js" defer></script>
+    <% if (data.username) { %>
+        <script src="../../JS/logout.js" defer></script>
+    <% } %>
+
+</head>
+<body id="base">
+
+    <%- include("../common/header") %>
+
+    <% if (data.correct) { %>
+        <div class="user_page">
+            <img id="user_background" src="../../uploads/Ori__1697314962283__.png" alt="Image de profil de <%=data.about_user.username%>">
+            <div class="about_user">
+                <h2 id="user_page_username"><%=data.about_user.username%></h2>
+
+                <div id="quote_u">
+                    <% const quote = data.about_user.quote; %>
+                    <% if (quote !== null){ %>
+                        <p><%=quote%></p>
+                    <% } else { %>
+                        <p>Aucune description de profil</p>
+                    <% } %>
+                </div>
+                <!--une petite description de son profil-->
+                <!--ses centres d'interêts-->
+
+                <% if (data.about_user.normal_sub >= 0) { %>
+                    <% let sub = 'abonné'; %>
+                    <% if (data.about_user.normal_sub > 1) { %>
+                        <% sub += 's'; %>
+                    <% } %>
+                    <p><%=data.about_user.normal_sub%> <%=sub%> 🔔</p>
+                <% } else { %>
+                    <h3>🤯🤯🤯🤯🤯</h3>
+                <% } %>
+            </div>
+
+            <div class="actions_about_user">
+                <button id="subscribe">S'abonner</button>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="failure oe">
+            <p><%=data.error%></p>
+        </div>
+    <% } %>
+
+    <div id="change_user_background">
+        <form id="upload_user_page_pic" enctype="multipart/form-data">
+            <label>Changer votre image<br><input id="select_picture" type="file" name="file" accept=".jpg, .jpeg, .png, .gif"></label>
+            <button id="submit_picture" type="submit" name="submit_user_page_pic">Envoyer</button>
+        </form>
+
+        <div id="crop_image_container">
+            <img id="crop_image">
+            <div id="crop_image_buttons">
+                <button id="rotate">Rotation</button>
+                <button id="scaleX">Pivoter horizontalement</button>
+                <button id="scaleY">Pivoter verticalement</button>
+                <button id="clear">Réinitialiser</button>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../common/footer") %>
+
+</body>
+</html>
+
+
+<!--abonné normal (moins de 10 000 abonnés)-->
+<!--super abonné (plus de 10 000 abonnés)-->
